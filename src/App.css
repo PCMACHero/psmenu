@@ -5,9 +5,11 @@
 .small-box-title{
   font-family: psn;
   font-weight: 500;
-  font-size: 1.09em;
+  /* font-size: 1.09em; */
 }
-
+.app{
+  overflow: hidden;
+}
 .bar-text{
   font-family: psn;
   font-weight: 200;
