@@ -26,7 +26,9 @@
   text-align: center;
   height: 1080px;
   width: 1920px;
-  border: solid rgb(39, 39, 39) 1px;
+  
+  
+  /* border: solid rgb(39, 39, 39) 1px; */
 }
 
 .App-logo {
