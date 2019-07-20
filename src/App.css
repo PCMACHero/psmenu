@@ -7,9 +7,7 @@
   font-weight: 500;
   /* font-size: 1.09em; */
 }
-.app{
-  overflow: hidden;
-}
+
 .bar-text{
   font-family: psn;
   font-weight: 200;
@@ -24,10 +22,11 @@
 }
 
 .App {
+  overflow: hidden;
   text-align: center;
   height: 1080px;
   width: 1920px;
-  border: solid white 1px;
+  border: solid rgb(39, 39, 39) 1px;
 }
 
 .App-logo {
