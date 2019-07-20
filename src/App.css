@@ -1,5 +1,31 @@
+@font-face{
+  font-family: psn;
+  src: url('./media/SST-Light.woff')
+}
+.small-box-title{
+  font-family: psn;
+  font-weight: 500;
+  font-size: 1.09em;
+}
+
+.bar-text{
+  font-family: psn;
+  font-weight: 200;
+  font-size: .8em;
+  color: rgba(255, 255, 255, 0.854);
+}
+
+.small-box-title-2{
+  font-family: psn;
+  font-weight: 400;
+  font-size: .6em;
+}
+
 .App {
   text-align: center;
+  height: 1080px;
+  width: 1920px;
+  border: solid white 1px;
 }
 
 .App-logo {
@@ -30,4 +56,24 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.animated.delay-5s {
+  animation-delay: .3s;
+}
+
+#video{
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+}
+
+.top-icon{
+  height: 40px;
+  width: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  
 }
