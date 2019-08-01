@@ -1,7 +1,7 @@
 import React from 'react'
 import psnBtns from '../media/i-psbtns.png'
 import store from '../media/i-psstore.png'
-
+import sMove from '../media/audio/s-moveLR.wav'
 import news from '../media/g-new.png'
 import vue from '../media/g-vue.png'
 import tv from '../media/g-tv.png'
@@ -19,9 +19,13 @@ export default class MainRow extends React.Component{
     state={
         selected:0,
         pixelsToSlide: 0,
-        arrow:null
+        arrow:null,
+        beginTouch:null
     }
 
+
+    moveSound= new Audio(sMove)
+    
     boxes=[
         {
             title:"PlayStation Store",
@@ -67,6 +71,12 @@ export default class MainRow extends React.Component{
     ]
 
     smallBoxWidth=null
+
+    playSound=(s)=>{
+        s.currentTime = 0
+        s.play()
+    }
+
     keyPress=(e)=>{
         
         console.log("key pressed", e.key)
@@ -74,6 +84,7 @@ export default class MainRow extends React.Component{
             if(this.state.selected===this.boxes.length-1){
                 return
             }
+            this.playSound(this.moveSound)
             this.setState({
                 selected: this.state.selected + 1
             },()=>{
@@ -84,6 +95,7 @@ export default class MainRow extends React.Component{
             if(this.state.selected===0){
                 return
             }else{
+                this.playSound(this.moveSound)
                 this.setState({
                     selected: this.state.selected - 1
                 },()=>{
@@ -94,7 +106,17 @@ export default class MainRow extends React.Component{
         }
         
     }
-
+    touchEnd=(e)=>{
+        let distance = this.state.beginTouch - e
+        if(distance> 50){
+            console.log('changed', distance)
+            this.keyPress({key:"ArrowRight"})
+        }
+        if(distance< -50){
+            console.log('changed', distance)
+            this.keyPress({key:"ArrowLeft"})
+        }
+    }
     slide=(px, direction)=>{
         px += 5
         if(direction==="r"){
@@ -113,12 +135,21 @@ export default class MainRow extends React.Component{
             
         }
         
-    
+    componentDidUpdate(p){
+        if(p.sound !== this.props.sound){
+            if(this.props.sound){
+                this.moveSound.volume = 1
+            }
+        }
+    }
 
     componentDidMount(){
+        this.moveSound.volume = 0
         this.smallBoxWidth = document.getElementsByClassName("small-box")[0].offsetWidth
         console.log("my small boxes", this.smallBoxWidth)
         window.addEventListener("keyup", this.keyPress)
+        window.addEventListener("touchstart", (e)=>this.setState({beginTouch:e.touches[0].clientX}))
+        window.addEventListener("touchend", (e)=>this.touchEnd(e.changedTouches[0].clientX))
 
         
         
