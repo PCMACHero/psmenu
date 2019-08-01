@@ -20,11 +20,14 @@ export default class MainRow extends React.Component{
         selected:0,
         pixelsToSlide: 0,
         arrow:null,
-        beginTouch:null
+        beginTouch:null,
+        sound:false
     }
 
 
-    moveSound= new Audio(sMove)
+    moveSound = new Audio(sMove)
+
+    iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
     
     boxes=[
         {
@@ -72,9 +75,16 @@ export default class MainRow extends React.Component{
 
     smallBoxWidth=null
 
-    playSound=(s)=>{
-        s.currentTime = 0
-        s.play()
+    playSound=(s,tf)=>{
+        if(this.iOS || tf==false){
+            return
+        }
+        
+        if (s.paused) {
+            s.play();
+        }else{
+            s.currentTime = 0
+        }
     }
 
     keyPress=(e)=>{
@@ -84,7 +94,7 @@ export default class MainRow extends React.Component{
             if(this.state.selected===this.boxes.length-1){
                 return
             }
-            this.playSound(this.moveSound)
+            this.playSound(this.moveSound,this.state.sound)
             this.setState({
                 selected: this.state.selected + 1
             },()=>{
@@ -95,7 +105,7 @@ export default class MainRow extends React.Component{
             if(this.state.selected===0){
                 return
             }else{
-                this.playSound(this.moveSound)
+                this.playSound(this.moveSound,this.state.sound)
                 this.setState({
                     selected: this.state.selected - 1
                 },()=>{
@@ -137,14 +147,15 @@ export default class MainRow extends React.Component{
         
     componentDidUpdate(p){
         if(p.sound !== this.props.sound){
-            if(this.props.sound){
-                this.moveSound.volume = 1
+            if(this.props.sound && this.moveSound){
+                this.setState({sound:this.props.sound})
             }
         }
     }
 
     componentDidMount(){
-        this.moveSound.volume = 0
+        
+        
         this.smallBoxWidth = document.getElementsByClassName("small-box")[0].offsetWidth
         console.log("my small boxes", this.smallBoxWidth)
         window.addEventListener("keyup", this.keyPress)
