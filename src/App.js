@@ -70,6 +70,9 @@ class App extends React.Component{
   if(hour===0){
     hour=12
     m="AM"
+  }else if(hour===12){
+    hour=12
+    m="PM"
   }else{
     hour=hour>11?(hour-12):hour
     m="PM"
