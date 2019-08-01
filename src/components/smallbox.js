@@ -5,19 +5,19 @@ export default class SmallBox extends React.Component{
     render(){
         let marginR = null
         if(this.props.selected){
-            marginR = 135
+            marginR = 7.03125
         }else{
             if(this.props.leftOfSelected){
-                marginR=20
+                marginR=1.0416666666666665
             }else{
-                marginR= 3
+                marginR= 0.15625
             }
         }
 
         return (
                     
                         <div  className={this.props.selected?"selected-box ": "small-box"} 
-                        style={{marginRight:`${marginR}px`}}
+                        style={{marginRight:`${marginR}vw`}}
                         >
                             <div className={this.props.selected?"selected-box-border":""}></div>
                             <div className={this.props.selected?"small-box-img-selected": "small-box-img"} style={{backgroundImage:`url("${this.props.img}")`}}></div>

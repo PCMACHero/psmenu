@@ -11,24 +11,24 @@
 .bar-text{
   font-family: psn;
   font-weight: 200;
-  font-size: .8em;
+  font-size: .8vw;
   color: rgba(255, 255, 255, 0.854);
 }
 
 .small-box-title-2{
   font-family: psn;
   font-weight: 400;
-  font-size: .6em;
+  font-size: 1vw;
 }
 
 .App {
   overflow: hidden;
   text-align: center;
-  height: 1080px;
-  width: 1920px;
+  height: 56.25vw;
+  width: 100vw;
   
   
-  /* border: solid rgb(39, 39, 39) 1px; */
+  /* border: solid rgb(60, 255, 0) 1px; */
 }
 
 .App-logo {
@@ -66,16 +66,16 @@
 }
 
 #video{
-  width: 1920px;
-  height: 1080px;
+  height: 56.25vw;
+  width: 100vw;
   position: absolute;
   z-index: -1;
   left: 0;
 }
 
 .top-icon{
-  height: 40px;
-  width: 40px;
+  height: 2.083333333333333vw;
+  width: 2.083333333333333vw;
   background-size: contain;
   background-repeat: no-repeat;
   

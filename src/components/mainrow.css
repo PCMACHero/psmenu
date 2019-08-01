@@ -12,7 +12,7 @@
     position: relative;
     
     
-    /* border: 5px solid green; */
+
 }
 .selected-box-border{
     display: flex;
@@ -26,10 +26,10 @@
     transition: 300ms transform ease-out;
     /* transform: scale(1.61); */
     transform-origin: top;
-    border: solid rgba(255, 255, 255, 0) 2px;
-    box-shadow: 0px 0px 0px 3px rgb(204, 223, 236);
+    border: solid rgba(255, 255, 255, 0) 0.10416666666666667vw;
+    box-shadow: 0px 0px 0px 0.15625vw rgb(204, 223, 236);
     position: absolute;
-    right: -2px;
+    right: -.1vw;
     
     
     
@@ -48,10 +48,10 @@
     transition: 300ms transform ease-out;
     transform: scale(1.61);
     transform-origin: left top;
-    /* transform: translateY(100px); */
+    
     /* animation: selectedGrow 8s forwards ease-in; */
     z-index: 1;
-    margin-right: 135px;
+    margin-right: 7.03125vw;
     
 }
 
@@ -71,7 +71,7 @@
     width: 10.5%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.194);
-    margin: 0 2px;
+    margin: 0 0.10416666666666667vw;
     
 }
 
@@ -97,10 +97,10 @@
     align-items: center;
     flex-direction: row;
     height: 17.5%;
-    width: 500%;
+    width: 800%;
     color:white;
-    font-size: 2em;
-    /* border: solid 1px red; */
+    font-size: 2vw;
+    
     
 }
 
@@ -110,8 +110,8 @@
     align-items: center;
     flex-direction: row;
     /* position: relative; */
-    width: 105%;
-    /* margin: 0px 7px; */
+    width: 50vw;
+    
     background-color: rgb(41, 72, 166);
     height: 100%;
     
@@ -124,7 +124,7 @@
     flex-direction: row;
     /* margin-left: 120%; */
     width: 200%;
-    margin-left: 18px;
+    margin-left: 0.9375vw;
     /* display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -140,7 +140,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    margin-right: 18px;
+    margin-right: 0.9375vw;
     width: 200%;
    
 }
@@ -151,7 +151,7 @@
         box-shadow: 0px 0px 1px 5px rgba(255, 255, 255, 0);
     }
     to {
-        border: 3px solid rgba(255, 255, 255, 0);
+        border: 0.10416666666666667% solid rgba(255, 255, 255, 0);
         box-shadow: 0px 0px 1px 5px rgba(255, 255, 255, 0.886);
     }
 }
