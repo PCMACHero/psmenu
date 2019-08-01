@@ -14,7 +14,8 @@ class App extends React.Component{
     time:null,
     randomNum:null,
     modal:true,
-    sound:false
+    sound:false,
+    ios:true
   }
 
   openSound= new Audio(sOpen)
@@ -45,7 +46,15 @@ class App extends React.Component{
     "i-like-turtles3422"
   ]
 
+  //iOS blocks certain feautres because they know better than you, so no sounds
 
+  getIOS=()=>{
+    let iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    this.setState({
+      ios:iOS
+    })
+    console.log("is ios?", iOS)
+  }
 
   makeRandomNum=()=>{
     let num = Math.random() * 10 
@@ -73,6 +82,7 @@ class App extends React.Component{
   }
   
   componentDidMount(){
+    this.getIOS()
     this.makeRandomNum()
     this.getTime()
     setInterval(() => {
@@ -94,13 +104,13 @@ class App extends React.Component{
         onClick={()=>{
           this.setState({modal:false, sound:true})
           this.openSound.play()
-        }} style={{color:"white",fontSize:"2em",fontFamily:"psn"}}>Start with sound</div>
+        }} style={{color:"white",fontSize:"2em",fontFamily:"psn", display:this.state.ios?"none":"flex"}}>Start with sound</div>
         <div className="animated fadeIn slow" style={{color:"white",fontSize:"2em",fontFamily:"psn"}}>Use left and right arrow keys on keyboard to navigate</div>
         <div className="animated fadeIn slow" style={{color:"white",fontSize:"2em",fontFamily:"psn"}}>Swipe left and right on mobile</div>
 
       </div>
       <div className="App" style={{filter:`blur(${this.state.modal?"5":0}px)`}}>
-        <video autoplay="true" muted="true" loop="true" id="video">
+        <video autoPlay={true} muted={true} loop={true} id="video">
   
           <source src={vid} type="video/mp4"/>
         </video>
