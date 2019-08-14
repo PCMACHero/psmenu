@@ -21,9 +21,11 @@ export default class MainRow extends React.Component{
         pixelsToSlide: 0,
         arrow:null,
         beginTouch:null,
-        sound:false
+        sound:false,
+        smallBoxWidth:null
     }
 
+    resizeId;
 
     moveSound = new Audio(sMove)
 
@@ -73,7 +75,10 @@ export default class MainRow extends React.Component{
         }
     ]
 
-    smallBoxWidth=null
+    // state.smallBoxWidth=null
+
+
+
 
     playSound=(s,tf)=>{
         if(this.iOS || tf==false){
@@ -88,7 +93,9 @@ export default class MainRow extends React.Component{
     }
 
     keyPress=(e)=>{
-        
+        if(e.key==="Enter"){
+            alert("This is cannot play games. Menu demo only")
+        }
         console.log("key pressed", e.key)
         if(e.key==="ArrowRight"){
             if(this.state.selected===this.boxes.length-1){
@@ -98,7 +105,7 @@ export default class MainRow extends React.Component{
             this.setState({
                 selected: this.state.selected + 1
             },()=>{
-                this.slide(this.smallBoxWidth, "r")
+                this.slide(this.state.smallBoxWidth, "r")
             })
         }
         if(e.key==="ArrowLeft"){
@@ -109,7 +116,7 @@ export default class MainRow extends React.Component{
                 this.setState({
                     selected: this.state.selected - 1
                 },()=>{
-                    this.slide(this.smallBoxWidth, "l")
+                    this.slide(this.state.smallBoxWidth, "l")
                 })
             }
             
@@ -147,16 +154,30 @@ export default class MainRow extends React.Component{
         
     componentDidUpdate(p){
         if(p.sound !== this.props.sound){
-            if(this.props.sound && this.moveSound){
-                this.setState({sound:this.props.sound})
-            }
+            // if(this.props.sound && this.moveSound){
+            //     this.setState({sound:this.props.sound})
+            // }
+            this.setState({sound:this.props.sound})
         }
     }
 
     componentDidMount(){
         
+        window.addEventListener('resize', ()=> {
+            this.setState({
+                selected:0,
+                pixelsToSlide:0,
+                smallBoxWidth : document.getElementsByClassName("small-box")[0].offsetWidth
+            })
+            // this.smallBoxWidth = document.getElementsByClassName("small-box")[0].offsetWidth
+            // clearTimeout(this.resizeId);
+            // this.resizeId = setTimeout(this.doneResizing, 500);
+        });
+        this.setState({
+            smallBoxWidth : document.getElementsByClassName("small-box")[0].offsetWidth
+        })
+        // this.smallBoxWidth = document.getElementsByClassName("small-box")[0].offsetWidth
         
-        this.smallBoxWidth = document.getElementsByClassName("small-box")[0].offsetWidth
         console.log("my small boxes", this.smallBoxWidth)
         window.addEventListener("keyup", this.keyPress)
         window.addEventListener("touchstart", (e)=>this.setState({beginTouch:e.touches[0].clientX}))
@@ -167,6 +188,7 @@ export default class MainRow extends React.Component{
     }
 
     render(){
+        console.log("px to slide:", this.state.pixelsToSlide)
         return (
             <div 
             

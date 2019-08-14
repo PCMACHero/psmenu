@@ -7,8 +7,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
-  
-  background-image: linear-gradient(to right, rgb(0, 7, 28),rgb(23, 23, 23));
+  height: 100vh;
+  background-image: linear-gradient(to right, rgb(0, 51, 202),rgb(0, 7, 143));
 }
 
 

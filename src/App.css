@@ -22,6 +22,9 @@
 }
 
 .App {
+  position: absolute;
+  top: 50vh;
+  transform: translateY(-50%);
   overflow: hidden;
   text-align: center;
   height: 56.25vw;
@@ -112,4 +115,42 @@
   border: .3vw solid rgb(0, 115, 255);
   transition: 200ms ease-in-out;
   background-color: rgba(195, 195, 255, 0.315);
+}
+
+.menu-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom:10%;
+  /* width: 5vw; */
+  padding: 24px;
+  height: 3vw;
+  background-color: rgba(0, 255, 255, 0.075);
+  color: white;
+  cursor: pointer;
+  font-size: 1.5vw;
+  font-family: psn;
+
+}
+
+.menu-btn:hover{
+  transition: 100ms ease-in-out;
+  background-color: rgba(0, 255, 255, 0.432);
+}
+
+.tv-overlay{
+  top: 10%;
+  position: absolute;
+  width: 100vw;
+  z-index: 4;
+  height: -webkit-fill-available;
+  /* height: 100vw; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.App{
+  box-shadow: 0 0 10px 1px rgba(2, 0, 34, 0.651);
 }
